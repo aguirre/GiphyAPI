@@ -11,7 +11,7 @@ function addButton() {
   $("#buttonBox").empty();
   for (var i = 0; i < gifList.length; i++) {
     var newButton = $("<button>");
-    newButton.addClass("btn-lg btn-info");
+    newButton.addClass("gifButton btn-lg btn-info");
     newButton.attr("gifName", gifList[i]);
     newButton.text(gifList[i]);
     $("#buttonBox").append(newButton);
@@ -37,5 +37,22 @@ $("#addGifs").on("click", function(e) {
     addButton();
   });
 });
+
+// Function to display gifs
+function displayGifs() {
+  var gif = $(this).attr("gifName");
+  var queryURL =
+    "https://api.giphy.com/v1/gifs/search?q=" +
+    gif +
+    "&api_key=dc6zaTOxFJmzC&limit=10";
+  $.ajax({
+    url: queryURL,
+    method: "GET"
+  }).then(function(response) {
+    console.log(response);
+  });
+}
+
+$(document).on("click", ".gifButton", displayGifs);
 
 addButton();
