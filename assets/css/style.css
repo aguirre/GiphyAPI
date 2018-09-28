@@ -1,3 +1,10 @@
 body {
-  background-image: url("../images/bg.jpg");
+  padding-top: 20px;
+  /* font-family: "Teko", Arial; */
+  color: white;
+  text-shadow: 2px 2px 4px #000;
+  background: url("../images/bg.png");
+}
+.container {
+  text-align: center;
 }
