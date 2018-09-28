@@ -1,9 +1,12 @@
 body {
   /* font-family: "Teko", Arial; */
-  color: white;
-  text-shadow: 2px 2px 4px #000;
   background: url("../images/bg.jpg");
 }
+button {
+  text-shadow: 2px 2px 4px #000;
+  margin-left: 5px;
+}
 .container {
+  padding: 20px;
   text-align: center;
 }
