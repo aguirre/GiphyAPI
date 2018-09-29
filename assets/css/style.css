@@ -5,8 +5,16 @@ body {
 button {
   text-shadow: 2px 2px 4px #000;
   margin-left: 5px;
+  margin-top: 5px;
+}
+img {
+  margin-left: 5px;
+  margin-top: 5px;
 }
 .container {
-  padding: 20px;
+  padding: 10px;
   text-align: center;
+}
+#gifBox {
+  padding: 10px;
 }
