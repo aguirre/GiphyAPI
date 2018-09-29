@@ -1,4 +1,4 @@
-var gifList = [
+var topics = [
   "Red Bull Rampage",
   "Snowboarding",
   "Nitro Circus",
@@ -9,11 +9,11 @@ var gifList = [
 // Add Buttons to gifBox
 function addButton() {
   $("#buttonBox").empty();
-  for (var i = 0; i < gifList.length; i++) {
+  for (var i = 0; i < topics.length; i++) {
     var newButton = $("<button>");
     newButton.addClass("gifButton btn-lg btn-info");
-    newButton.attr("gifName", gifList[i]);
-    newButton.text(gifList[i]);
+    newButton.attr("gifName", topics[i]);
+    newButton.text(topics[i]);
     $("#buttonBox").append(newButton);
   }
 }
@@ -31,7 +31,7 @@ $("#addGifs").on("click", function(e) {
     url: queryURL,
     method: "GET"
   }).then(function(response) {
-    gifList.push(gif);
+    topics.push(gif);
     addButton();
   });
 });
@@ -42,7 +42,7 @@ function displayGifs() {
   var queryURL =
     "https://api.giphy.com/v1/gifs/search?q=" +
     gif +
-    "&api_key=dc6zaTOxFJmzC&limit=10";
+    "&api_key=dc6zaTOxFJmzC&limit=9";
   $.ajax({
     url: queryURL,
     method: "GET"
@@ -50,7 +50,13 @@ function displayGifs() {
     console.log(response);
     $("#gifBox").empty();
     for (var i = 0; i < response.data.length; i++) {
-      var newSpan = $("<span>");
+      var newDiv = $("<div>");
+      newDiv.addClass("col-md-4 imgDiv");
+      newDiv.html(
+        "<small class='topRight'>Rating: " +
+          response.data[i].rating.toUpperCase() +
+          "</small>"
+      );
       var gifImg = $(
         "<img src='" + response.data[i].images.fixed_height_still.url + "'>"
       );
@@ -60,8 +66,8 @@ function displayGifs() {
       gifImg.attr("data-still", response.data[i].images.fixed_height_still.url);
       gifImg.attr("data-animate", response.data[i].images.fixed_height.url);
 
-      $(newSpan).append(gifImg);
-      $("#gifBox").append(newSpan);
+      $(newDiv).append(gifImg);
+      $("#gifBox").append(newDiv);
     }
   });
 }
