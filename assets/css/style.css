@@ -11,6 +11,8 @@ button {
 }
 img {
   padding: 5px;
+  max-width: 100%;
+  height: auto;
 }
 .container {
   padding: 10px;
@@ -26,8 +28,4 @@ img {
   position: absolute;
   top: 3%;
   left: 7%;
-}
-img {
-  max-width: 100%;
-  height: auto;
 }
